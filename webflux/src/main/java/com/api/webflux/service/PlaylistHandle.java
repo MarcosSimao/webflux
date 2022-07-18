@@ -1,5 +1,6 @@
-package com.api.webflux.document;
+package com.api.webflux.service;
 
+import com.api.webflux.document.PlayList;
 import com.api.webflux.service.PlayListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -11,14 +12,14 @@ import reactor.core.publisher.Mono;
 import static org.springframework.web.reactive.function.server.EntityResponse.fromPublisher;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
-@Component
+//@Component
 public class PlaylistHandle {
     @Autowired
     PlayListService service;
     public Mono<ServerResponse> findAll(ServerRequest serverRequest){
         return ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(service.findAll(),PlayList.class);
+                .body(service.findAll(), PlayList.class);
     }
     public Mono<ServerResponse> findById(ServerRequest serverRequest){
         String id=serverRequest.pathVariable("id");
